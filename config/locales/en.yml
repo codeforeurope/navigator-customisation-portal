@@ -1,0 +1,45 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  general__title: "CityNavigator Customisation Portal"
+  general__home: "Home"
+  general__sign_in: "Sign in"
+  general__sign_out: "Sign out"
+  general__sign_up: "Sign up"
+  general__my_account: "My account"
+  general__back: "Back"
+  general__show: "Show"
+  general__edit: "Edit"
+  general__delete: "Delete"
+  general__delete_confirm: "Are you sure?"
+
+  create_user__title: "Add new user"
+  create_user__firstname: "Firstname"
+  create_user__lastname: "Lastname"
+  create_user__email: "Email"	
+  create_user__terms_and_conditions: "Terms and conditions text should go here."	
+  create_user__agree_terms_and_conditions: "Agree terms & conditions"
+  create_user__error_username_missing: "Username must exists."
+  create_user__error_username_taken: "Sorry someone is already using this username."
+  create_user__error_username_bad_format: "Sorry, the username can only include letters and numbers."
+  create_user__error_agree_terms_and_conditions: "You must read and agree the terms and conditions."
+
+  edit_user__title: "Update details"
+
+  manage_theme__title: "Manage themes"
+  manage_theme__your_themes: "Your themes"
+  manage_theme__delete_confirm: "Are you sure you want to delete the theme? This action cannot be reversed."
+  manage_theme__add_theme: "Add new theme"
+  manage_theme__zip_file: "Upload theme file from ThemeRoller"
+  manage_theme__create_zip_file: "Do not have a theme file yet? Click here to create one with ThemeRoller."
+  manage_theme__is_searchable: "Show this theme to other users?"
+  manage_theme__edit_theme: "Edit theme"
+  manage_theme__edit_success: "Theme was successfully updated."
+  manage_theme__create_success: "Theme was successfully created."
+
+  create_theme__name: "Name"
+  create_theme__error_name_taken: "Sorry someone is already using this theme name."
+  create_theme__error_name_bad_format: "Sorry, the theme name can only include letters and numbers."
+
+  admin_users__title: "Listing users"
