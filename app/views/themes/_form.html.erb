@@ -1,0 +1,39 @@
+ <%=form_for @theme, :multipart => true do |f|%>
+  <% if @theme.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@theme.errors.count, "error") %> prohibited this theme from being saved:</h2>
+
+      <ul>
+      <% @theme.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :uploaded_file, t(:manage_theme__zip_file)  %><br />
+    <%= f.file_field :uploaded_file %><br/>
+    <a href="http://jquerymobile.com/themeroller/index.php" target="_blank"><%= t(:manage_theme__create_zip_file) %></a>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <% if @has_name %>
+	<%= @theme.name %>
+  	<%= f.hidden_field :name %>
+    <% else %>
+    	<%= f.text_field :name %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :is_searchable, t(:manage_theme__is_searchable) %><br />
+    <%= f.check_box :is_searchable %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

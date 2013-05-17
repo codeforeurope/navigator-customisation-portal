@@ -1,0 +1,20 @@
+<%= render '/users/submenu' %>
+
+<h1><%= t :manage_theme__title %></h1>
+
+<% if @themes.size > 0 %>
+	<h1><%= t :manage_theme__your_themes %></h1>
+	<ul>
+	<% for theme in @themes %>
+	<li>
+		<%= theme.name %>&nbsp;
+		<%= link_to t(:general__edit), "/themes/#{theme.id}/edit" %>&nbsp;
+		<%= link_to t(:general__delete), "/themes/#{theme.id}", method: :delete, data: { confirm: t(:manage_theme__delete_confirm) } %>
+	</li>
+	<% end %>
+	</ul>
+<% end %>
+
+<ul data-role="listview">
+	<li><%= link_to t(:manage_theme__add_theme), :action=> "new" %></li>
+</ul>

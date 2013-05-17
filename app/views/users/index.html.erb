@@ -1,0 +1,27 @@
+<h1><%= t :admin_users__title %></h1>
+
+<table>
+  <tr>
+    <th><%= t :create_user__firstname %></th>
+    <th><%= t :create_user__lastname %></th>
+    <th><%= t :create_user__email %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.firstname %></td>
+    <td><%= user.lastname %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to t(:general__show), user %></td>
+    <td><%= link_to t(:general__edit), edit_user_path(user) %></td>
+    <td><%= link_to t(:general__delete), user, method: :delete, data: { confirm: t(:general__delete_confirm) } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to t(:create_user__title), new_user_path %>
