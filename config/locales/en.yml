@@ -32,6 +32,7 @@ en:
   manage_theme__delete_confirm: "Are you sure you want to delete the theme? This action cannot be reversed."
   manage_theme__add_theme: "Add new theme"
   manage_theme__zip_file: "Upload theme file from ThemeRoller"
+  manage_theme__error_zip_file: "You can only upload ZIP files."
   manage_theme__create_zip_file: "Do not have a theme file yet? Click here to create one with ThemeRoller."
   manage_theme__is_searchable: "Show this theme to other users?"
   manage_theme__edit_theme: "Edit theme"
