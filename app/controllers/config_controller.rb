@@ -9,6 +9,7 @@ class ConfigController < ApplicationController
 		hash = Hash.new
 		hash[:name] = theme.name
 		hash[:description] = theme.description
+		hash["config_url"] = "#{System::BASE_URL}/config/#{theme.get_uri}.json"
 		list.push(hash)
 	end
 	respond_to do |format|
@@ -31,7 +32,10 @@ class ConfigController < ApplicationController
 		hash = Hash.new
 		hash["name"] = theme.name
 		hash["description"] = theme.description
-		hash["css_url"] = "#{System::BASE_URL}/themes/#{theme.get_uri}/theme.css"
+		theme_dir = "#{Rails.root}/public/themes/#{theme.get_uri}"
+		if File.exist?("#{theme_dir}/theme.css")
+			hash["css_url"] = "#{System::BASE_URL}/themes/#{theme.get_uri}/theme.css"
+		end
 		respond_to do |format|
 		  if params[:callback]
 			format.json { render :json => hash.to_json, :callback => params[:callback] }

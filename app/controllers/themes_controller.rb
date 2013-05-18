@@ -30,7 +30,7 @@ class ThemesController < ApplicationController
 
     # Save the theme file.
     save_theme_file(@theme,params)
-    
+
     respond_to do |format|
       if @theme.save
         format.html { redirect_to themes_url, notice: t(:manage_theme__create_success) }
@@ -77,27 +77,31 @@ class ThemesController < ApplicationController
   end
 
   def save_theme_file(theme, params)
-	if params[:theme][:uploaded_file] and params[:theme][:uploaded_file].tempfile
-		sfile = params[:theme][:uploaded_file].tempfile
-		theme_dir = "#{Rails.root}/public/themes/#{theme.get_uri}"
+	begin
+		if params[:theme][:uploaded_file] and params[:theme][:uploaded_file].tempfile
+			sfile = params[:theme][:uploaded_file].tempfile		
+			theme_dir = "#{Rails.root}/public/themes/#{theme.get_uri}"
 
-		#Delete the old theme.
-		FileUtils.rm_rf(theme_dir) 
+			#Delete the old theme.
+			FileUtils.rm_rf(theme_dir) 
 	
-		#Save the new files.
-		FileUtils.mkdir(theme_dir)
-		FileUtils.mkdir("#{theme_dir}/images/")
-		Zip::ZipFile.open(sfile) do |zipfile|
-		  zipfile.each do |file|
-			if(file.name.index("testthemerollertheme.min.css"))
-			   File.open("#{theme_dir}/theme.css", "w") { |f| f.write(zipfile.read(file.name)) }
+			#Save the new files.
+			FileUtils.mkdir(theme_dir)
+			FileUtils.mkdir("#{theme_dir}/images/")
+			Zip::ZipFile.open(sfile) do |zipfile|
+			  zipfile.each do |file|
+				if(file.name.index("testthemerollertheme.min.css"))
+				   File.open("#{theme_dir}/theme.css", "w") { |f| f.write(zipfile.read(file.name)) }
+				end
+				if(file.name.index("/images/"))
+				   imgName = file.name[file.name.index("/images/")+8,file.name.length]
+				   File.open("#{theme_dir}/images/#{imgName}", "wb") { |f| f.write(zipfile.read(file.name)) }
+				end
+			  end
 			end
-			if(file.name.index("/images/"))
-			   imgName = file.name[file.name.index("/images/")+8,file.name.length]
-			   File.open("#{theme_dir}/images/#{imgName}", "wb") { |f| f.write(zipfile.read(file.name)) }
-			end
-		  end
 		end
+	rescue
+		#Just ignore.
 	end
   end
 end
