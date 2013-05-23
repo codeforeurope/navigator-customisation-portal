@@ -10,6 +10,13 @@ CityNavigatorCP::Application.routes.draw do
   	end
   end
 
+  resources :content_pages do
+ 	collection do
+    		get :edit
+  	end
+  end
+  get "content_pages/:theme_uri/:page_uri" => "content_pages#show_page"
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :users do
