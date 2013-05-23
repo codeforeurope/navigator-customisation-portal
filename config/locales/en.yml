@@ -43,4 +43,14 @@ en:
   create_theme__error_name_taken: "Sorry someone is already using this theme name."
   create_theme__error_name_bad_format: "Sorry, the theme name can only include letters and numbers."
 
+  manage_content_page__title: "Manage content pages"
+  manage_content_page__your_themes: "Theme content pages"
+  manage_content_page__delete_confirm: "Are you sure you want to delete the content page? This action cannot be reversed."
+  manage_content_page__add_page: "Add new content page"
+  manage_content_page__edit_page: "Edit content page"
+  manage_content_page__edit_success: "Content page was successfully updated."
+  manage_content_page__create_success: "Content page was successfully created."
+
+  create_content_page__error_title_taken: "Sorry, you already have a page with this name." 
+  
   admin_users__title: "Listing users"
