@@ -16,6 +16,8 @@ class Theme < ActiveRecord::Base
   validates :name, :format => {:on => :create, :with => /^\w+$/i, :message => I18n.t(:create_theme__error_name_bad_format) }
   validates :uploaded_file, :iszipfile => true
 
+  has_many :content_pages, :dependent => :destroy
+
   def get_uri
 	return self.name.downcase
   end

@@ -36,6 +36,17 @@ class ConfigController < ApplicationController
 		if File.exist?("#{theme_dir}/theme.css")
 			hash["css_url"] = "#{System::BASE_URL}/themes/#{theme.get_uri}/theme.css"
 		end
+                content_pages = ContentPage.find(:all, :conditions => "theme_id=#{theme.id}", :order => "item_order asc")
+		if content_pages.size > 0
+			page_list = Array.new
+			for page in content_pages
+				page_hash = Hash.new
+				page_hash["title"] = page.title
+				page_hash["ajax_end_point"] = "#{System::BASE_URL}/content_pages/#{theme.get_uri}/#{page.get_uri}"
+				page_list.push(page_hash)
+			end
+			hash["content_pages"] =page_list
+		end
 		respond_to do |format|
 		  if params[:callback]
 			format.json { render :json => hash.to_json, :callback => params[:callback] }

@@ -1,0 +1,24 @@
+<%= render '/users/submenu' %>
+
+<ul data-role="listview">
+	<li><%= link_to t(:general__back), :controller=> "themes" %></li>
+</ul>
+
+<h1><%= t :manage_content_page__title %></h1>
+
+<% if @content_pages.size > 0 %>
+	<h1><%= t :manage_content_page__your_themes %></h1>
+	<ul>
+	<% for page in @content_pages %>
+	<li>
+		<%= page.title %>&nbsp;
+		<%= link_to t(:general__edit), "/content_pages/#{page.id}/edit" %>&nbsp;
+		<%= link_to t(:general__delete), "/content_pages/#{page.id}", method: :delete, data: { confirm: t(:manage_content_page__delete_confirm) } %>
+	</li>
+	<% end %>
+	</ul>
+<% end %>
+
+<ul data-role="listview">
+	<li><%= link_to t(:manage_content_page__add_page), :action=> "new", :theme_id => @theme.id %></li>
+</ul>

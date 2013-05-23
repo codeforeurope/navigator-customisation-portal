@@ -9,6 +9,7 @@
 	<li>
 		<%= theme.name %>&nbsp;
 		<%= link_to t(:general__edit), "/themes/#{theme.id}/edit" %>&nbsp;
+                <%= link_to t(:manage_content_page__title), "/content_pages/?theme_id=#{theme.id}" %>&nbsp;
 		<%= link_to t(:general__delete), "/themes/#{theme.id}", method: :delete, data: { confirm: t(:manage_theme__delete_confirm) } %>
 	</li>
 	<% end %>

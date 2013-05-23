@@ -1,0 +1,7 @@
+<ul data-role="listview">
+	<% if @theme != nil %>
+	<li><%= link_to t(:general__back), :action => "index", :theme_id => @theme.id %></li>
+	<% else %>
+	<li><%= link_to t(:general__back), :action => "index", :theme_id => @page.theme.id %></li>
+	<% end %>
+</ul>
