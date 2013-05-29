@@ -3,7 +3,7 @@ class ConfigController < ApplicationController
   # Return full list of public config items.
   # get /config.json
   def index
-	themes = Theme.find(:all, :conditions => "is_searchable = 1", :order => "name asc")
+	themes = Theme.find(:all, :conditions => "is_searchable = true", :order => "name asc")
 	list = Array.new
 	for theme in themes
 		hash = Hash.new
