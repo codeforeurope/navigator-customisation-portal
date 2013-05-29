@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130428090909) do
+ActiveRecord::Schema.define(:version => 20130522160905) do
+
+  create_table "content_pages", :force => true do |t|
+    t.integer  "theme_id"
+    t.string   "title"
+    t.text     "content"
+    t.integer  "item_order", :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "content_pages", ["item_order"], :name => "index_content_pages_on_item_order"
+  add_index "content_pages", ["title"], :name => "index_content_pages_on_title"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
