@@ -6,7 +6,7 @@ CityNavigatorCP::Application.initialize!
 
 module System
 	HTML_LANGUAGE = "en"
-	BASE_URL = "http://themes.city-navigator.org"
+	BASE_URL = "http://cryptic-brook-1876.herokuapp.com"
 end
 
 module Permissions
